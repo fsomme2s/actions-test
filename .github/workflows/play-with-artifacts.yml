@@ -14,8 +14,8 @@ jobs:
         - run: ls -R
         - uses: actions/upload-artifact@v4
           with:
+            name: foobar
             path: .
-            overwrite: true
 
   push-unnamed-artifact-2:
     needs: [push-unnamed-artifact-1]
@@ -27,8 +27,8 @@ jobs:
         - run: ls -R
         - uses: actions/upload-artifact@v4
           with:
+            name: fuubaz
             path: .
-            overwrite: true
 
   download-all-artifacts:
     needs: [push-unnamed-artifact-1, push-unnamed-artifact-2]
