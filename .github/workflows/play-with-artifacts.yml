@@ -35,9 +35,6 @@ jobs:
     steps:
         - uses: actions/download-artifact@v4
           with:
-            name: foobar
-        - uses: actions/download-artifact@v4
-          with:
-            name: fuubaz
+            merge-multiple: true
         - run: ls -R
 
