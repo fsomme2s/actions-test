@@ -35,6 +35,6 @@ jobs:
     steps:
         - uses: actions/download-artifact@v4
           with:
-            merge-multiple: true
+            path: all/my/artifacts/go/here
         - run: ls -R
 
