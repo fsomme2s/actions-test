@@ -18,7 +18,6 @@ jobs:
             path: .
 
   push-unnamed-artifact-2:
-    needs: [push-unnamed-artifact-1]
     runs-on: ubuntu-latest
     steps:
         - run: |
@@ -35,5 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/download-artifact@v4
+          with:
+            name: foobar
+        - uses: actions/download-artifact@v4
+          with:
+            name: fuubaz
         - run: ls -R
 
