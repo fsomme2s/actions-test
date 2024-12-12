@@ -1,12 +1,13 @@
 on:
-    pull_request:
-      types: [closed]
+    push:
+      branches: [main]
 
 jobs:
     echo-default-vars:
         runs-on: ubuntu-latest
         steps:
             - run: |
+                echo "GITHUB_WORKSPACE = '$GITHUB_WORKSPACE'"
                 echo "GITHUB_REF = '$GITHUB_REF'"
                 echo "GITHUB_HEAD_REF = '$GITHUB_HEAD_REF'"
                 echo "GITHUB_BASE_REF = '$GITHUB_BASE_REF'"
