@@ -17,5 +17,6 @@ jobs:
                 TEST="Foobar"
                 echo "TEST=$TEST" >> "$GITHUB_ENV"
                 echo "TEST=$TEST"
-            - run: |
+            - if: env.TEST == 'FobAR'
+              run: |
                 echo $TEST
