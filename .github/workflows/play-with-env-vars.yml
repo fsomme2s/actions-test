@@ -15,4 +15,5 @@ jobs:
                 echo "github.head_ref = '${{github.head_ref}}'"
                 echo "github.base_ref = '${{github.base_ref}}'"
                 TEST="Foobar"
+                echo $TEST
                 echo ${{env.TEST}}
