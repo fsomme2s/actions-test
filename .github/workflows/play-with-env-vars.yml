@@ -18,4 +18,4 @@ jobs:
                 echo "TEST=$TEST" >> "$GITHUB_ENV"
                 echo "TEST=$TEST"
             - run: |
-                echo ${{env.TEST}}
+                echo $TEST
