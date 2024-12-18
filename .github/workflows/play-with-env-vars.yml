@@ -6,10 +6,10 @@ jobs:
     echo-default-vars:
         runs-on: ubuntu-latest
         env:
-            FOO: abc 123 xyz
+            FOO: a 1 x
         steps:
             - run: |
-                : ${{env.FOO}}
+                : ${{env.FOO}} # comment
                 echo "$GITHUB_WORKSPACE"
                 echo "GITHUB_WORKSPACE = '$GITHUB_WORKSPACE'"
                 echo "GITHUB_REF = '$GITHUB_REF'"
