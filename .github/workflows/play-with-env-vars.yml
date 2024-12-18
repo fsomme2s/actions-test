@@ -4,7 +4,7 @@ on:
 
 jobs:
     resuse-hello-job:
-        uses: ./.github/workflows/say-hello.yml
+        uses: ./.github/workflows/templates/say-hello.yml
 
     echo-default-vars:
         runs-on: ubuntu-latest
