@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                : "$GITHUB_WORKSPACE"
+                echo "$GITHUB_WORKSPACE"
                 echo "GITHUB_WORKSPACE = '$GITHUB_WORKSPACE'"
                 echo "GITHUB_REF = '$GITHUB_REF'"
                 echo "GITHUB_HEAD_REF = '$GITHUB_HEAD_REF'"
