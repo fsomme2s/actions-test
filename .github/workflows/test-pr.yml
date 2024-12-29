@@ -1,0 +1,10 @@
+on:
+    push:
+        branches: ['!main']
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Print Event'
+              run: |
+                echo "event: $GITHUB_EVENT"
