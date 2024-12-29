@@ -1,6 +1,9 @@
+name: Test PR Behaviour
+
 on:
     push:
         branches: ['!main']
+
 jobs:
     greet:
         runs-on: ubuntu-latest
