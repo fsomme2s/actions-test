@@ -2,7 +2,6 @@ name: Test PR Behaviour
 
 on:
     push:
-        branches: ['!main']
 
 jobs:
     greet:
@@ -11,4 +10,3 @@ jobs:
             - name: 'Print Event'
               run: |
                 echo "event: $GITHUB_EVENT"
-                
