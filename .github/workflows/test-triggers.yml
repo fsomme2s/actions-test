@@ -1,0 +1,14 @@
+name: Test Triggers
+
+on: 
+    push: 
+        branches:
+            - feature/*
+            - **/foobar
+            
+            
+jobs:
+    say-hello:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo 'yo'
