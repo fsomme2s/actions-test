@@ -11,4 +11,5 @@ jobs:
     say-hello:
         runs-on: ubuntu-latest
         steps:
-            - run: echo 'yo'
+            - run: |
+              echo "yo"
