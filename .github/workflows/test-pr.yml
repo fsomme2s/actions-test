@@ -2,6 +2,7 @@ name: Test PR Behaviour
 
 on:
     push:
+        branches: ['!main']
 
 jobs:
     greet:
