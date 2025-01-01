@@ -4,3 +4,8 @@ on:
         branches: [main]
         paths:
             - '**.foo'
+jobs:
+    dummy:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hello"
