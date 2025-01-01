@@ -1,0 +1,6 @@
+name: Test PR Paths Behaviour
+on:
+    pull_request:
+        branches: [main]
+        paths:
+            - **.foo
