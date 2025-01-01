@@ -6,6 +6,9 @@ jobs:
     dummy:
         runs-on: ubuntu-latest
         steps:
-            - run: |
-                echo "Pushed Commit $GITHUB_EVENT_PULL_REQUEST_HEAD_SHA"
-                echo "Pushed Commit ${{github.event.pull_request.head.sha}}"
+            - env:
+                PUSHED_SHA: ${{github.event.pull_request.head.sha}}
+              run: |
+                echo "Pushed Commit $PUSHED_SHA"
+                git diff-tree --no-commit-id --name-only $PUSHED_SHA -r > commit-diff.txt
+                echo commit-diff.txt
