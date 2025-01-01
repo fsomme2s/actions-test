@@ -14,4 +14,4 @@ jobs:
               run: |
                 echo "Pushed Commit $PUSHED_SHA"
                 git diff-tree --no-commit-id --name-only $PUSHED_SHA -r > commit-diff.txt
-                echo commit-diff.txt
+                cat commit-diff.txt
