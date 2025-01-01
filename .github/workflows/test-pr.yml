@@ -8,3 +8,4 @@ jobs:
         steps:
             - run: |
                 echo "Pushed Commit $GITHUB_EVENT_PULL_REQUEST_HEAD_SHA"
+                echo "Pushed Commit ${{github.event.pull_request.head.sha}}"
