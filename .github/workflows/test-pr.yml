@@ -9,9 +9,13 @@ jobs:
             - uses: actions/checkout@v4
               with:
                 fetch-depth: 0
-            - env:
+            - name: Filter .foo Files
+              env:
                 PUSHED_SHA: ${{github.event.pull_request.head.sha}}
               run: |
                 echo "Pushed Commit $PUSHED_SHA"
                 git diff-tree --no-commit-id --name-only $PUSHED_SHA -r > commit-diff.txt
                 cat commit-diff.txt
+                if grep -qE '\.foo$' commit-diff.txt; then
+                  exit 0
+                fi
