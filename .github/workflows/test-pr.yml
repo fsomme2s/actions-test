@@ -18,8 +18,10 @@ jobs:
                 cat commit-diff.txt
                 if grep -qE '\.foo$' commit-diff.txt; then
                   echo "Found .foo files, rest of job will run"
+                  echo "DO_FOO=true" >> $GITHUB_ENV
                 else
                   echo "No .foo files, will skip job"
-                  exit 0
+                  echo "DO_FOO=false" >> $GITHUB_ENV
                 fi
-            - run: echo "DO THE FOO!"
+            - if: env.DO_FOO
+              run: echo "DO THE FOO!"
