@@ -6,6 +6,7 @@ jobs:
     dummy:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
             - env:
                 PUSHED_SHA: ${{github.event.pull_request.head.sha}}
               run: |
