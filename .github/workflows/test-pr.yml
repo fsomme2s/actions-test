@@ -17,5 +17,9 @@ jobs:
                 git diff-tree --no-commit-id --name-only $PUSHED_SHA -r > commit-diff.txt
                 cat commit-diff.txt
                 if grep -qE '\.foo$' commit-diff.txt; then
+                  echo "Found .foo files, rest of job will run"
+                else
+                  echo "No .foo files, will skip job"
                   exit 0
                 fi
+            - run: echo "DO THE FOO!"
