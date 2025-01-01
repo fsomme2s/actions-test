@@ -2,10 +2,9 @@ name: Test PR Paths Behaviour
 on:
     pull_request:
         branches: [main]
-        paths:
-            - '**.foo'
 jobs:
     dummy:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "Hello"
+            - run: |
+                echo "Pushed Commit $GITHUB_EVENT_PULL_REQUEST_HEAD_SHA"
