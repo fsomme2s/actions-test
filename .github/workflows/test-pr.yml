@@ -1,0 +1,27 @@
+name: Test PR Paths Behaviour
+on:
+    pull_request:
+        branches: [main]
+jobs:
+    dummy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - name: Filter .foo Files
+              env:
+                PUSHED_SHA: ${{github.event.pull_request.head.sha}}
+              run: |
+                echo "Pushed Commit $PUSHED_SHA"
+                git diff-tree --no-commit-id --name-only $PUSHED_SHA -r > commit-diff.txt
+                cat commit-diff.txt
+                if grep -qE '\.foo$' commit-diff.txt; then
+                  echo "Found .foo files, rest of job will run"
+                  echo "DO_FOO=true" >> $GITHUB_ENV
+                else
+                  echo "No .foo files, will skip job"
+                  echo "DO_FOO=false" >> $GITHUB_ENV
+                fi
+            - if: fromJSON(env.DO_FOO)
+              run: echo "DO THE FOO!"
