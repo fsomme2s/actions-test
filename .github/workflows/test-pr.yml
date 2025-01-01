@@ -23,5 +23,5 @@ jobs:
                   echo "No .foo files, will skip job"
                   echo "DO_FOO=false" >> $GITHUB_ENV
                 fi
-            - if: fromJSON(env.DO_FOO)
+            - if: env.DO_FOO == 'true'
               run: echo "DO THE FOO!"
