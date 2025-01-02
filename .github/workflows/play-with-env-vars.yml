@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             FOO: a 1 x
-            COERCED: ${{ '' == false }}
+            COERCED: ${{ 'false' == true }}
         steps:
             - run: |
                 : ${{env.FOO}} # comment
