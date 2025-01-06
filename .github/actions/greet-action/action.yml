@@ -14,5 +14,5 @@ runs:
         echo "conclusion: [composite] actions can only access inputs, and nothing of the parent workflow's context directly" 
         echo "top sekreet" 
       env:
-        MY_SECRET: ${{secrets.MY_SECRET}}
+        MY_SECRET: ${{inputs.my-secret}}
       shell: bash
