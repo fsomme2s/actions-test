@@ -14,4 +14,5 @@ jobs:
   say_hello_with_action:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/greet-action
