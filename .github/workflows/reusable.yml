@@ -5,4 +5,4 @@ jobs:
     say-hello:
         runs-on: ubuntu-latest
         steps:
-            - run: 'Hello ${{vars.GREET_NAME}}!'
+            - run: Hello ${{vars.GREET_NAME}}!
