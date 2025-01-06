@@ -8,7 +8,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        echo "hello config var: ${{vars.GREET_NAME}}"
+        echo "hello config var: vars is not accessible!"
         echo "Hello Input ${{inputs.to-greet}}!"
         echo "Hello Secret (probably redacted): $MY_SECRET" 
       env:
