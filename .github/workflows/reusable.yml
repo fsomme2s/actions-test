@@ -7,3 +7,4 @@ jobs:
         steps:
             - run: echo "Hello ${{vars.GREET_NAME}}!"
             - run: echo "Hello Input ${{inputs.to-greet}}!"
+
