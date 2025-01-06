@@ -10,7 +10,9 @@ runs:
     - run: |
         echo "hello config var: vars is not accessible!"
         echo "Hello Input parent inputs are not accessible!"
-        echo "Hello Secret (probably redacted): $MY_SECRET" 
+        echo "Hello Secret: secrets not accessible!"
+        echo "conclusion: [composite] actions can only access inputs, and nothing of the parent workflow's context directly" 
+        echo "top sekreet" 
       env:
         MY_SECRET: ${{secrets.MY_SECRET}}
       shell: bash
