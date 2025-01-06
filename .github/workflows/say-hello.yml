@@ -16,3 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/greet-action
+        with:
+         my-secret: ${{secrets.MY_SECRET}}

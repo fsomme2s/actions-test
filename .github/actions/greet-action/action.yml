@@ -1,12 +1,15 @@
 name: Greet Action
 description: greet people
+inputs:
+  my-secret:
+    description: 'tell me a secret'
 
 runs: 
   using: 'composite'
   env:
-    MY_SECRET: ${{secrets.MY_SECRET}}
+    MY_SECRET: ${{inputs.my-secret}}
   steps:
     - run: |
       echo "hello config var: ${{vars.GREET_NAME}}"
       echo "Hello Input ${{inputs.to-greet}}!"
-      echo "Hello Secret (probably redacted): "
+      echo "Hello Secret (probably redacted): $MY_SECRET"
