@@ -2,6 +2,10 @@ name: Say Hello
 
 on:
   workflow_dispatch:
+    inputs:
+      to-greet:
+        description: 'greet this guy or gal'
+
 
 jobs:
   say_hello: 
