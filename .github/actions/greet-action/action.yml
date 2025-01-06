@@ -9,8 +9,8 @@ runs:
   steps:
     - run: |
         echo "hello config var: vars is not accessible!"
-        echo "Hello Input ${{inputs.to-greet}}!"
+        echo "Hello Input parent inputs are not accessible!"
         echo "Hello Secret (probably redacted): $MY_SECRET" 
       env:
-        MY_SECRET: ${{inputs.my-secret}}
+        MY_SECRET: ${{secrets.MY_SECRET}}
       shell: bash
