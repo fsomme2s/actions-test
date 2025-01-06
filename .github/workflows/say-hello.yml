@@ -5,4 +5,4 @@ on:
 
 jobs:
   say_hello: 
-    uses: ./github/workflows/reusable.yml
+    uses: ./.github/workflows/reusable.yml
