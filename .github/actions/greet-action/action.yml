@@ -13,3 +13,4 @@ runs:
         echo "Hello Secret (probably redacted): $MY_SECRET" 
       env:
         MY_SECRET: ${{inputs.my-secret}}
+      shell: bash
