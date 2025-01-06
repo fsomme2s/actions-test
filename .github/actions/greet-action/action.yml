@@ -8,8 +8,4 @@ runs:
   using: 'composite'
   steps:
     - run: |
-      echo "hello config var: ${{vars.GREET_NAME}}"
-      echo "Hello Input ${{inputs.to-greet}}!"
-      echo "Hello Secret (probably redacted): $MY_SECRET" 
-    env:
-      MY_SECRET: ${{inputs.my-secret}}
+      echo "hello world!"
