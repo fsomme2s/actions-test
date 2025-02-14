@@ -3,18 +3,18 @@ name: Say Hello
 on:
   workflow_dispatch:
     inputs:
-      to-greet:
-        description: 'greet this guy or gal'
+      artifact-name:
+        description: 'how to name the artifact'
 
 
 jobs:
-  say_hello_with_workflow: 
-    uses: ./.github/workflows/reusable.yml
-  
-  say_hello_with_action:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/greet-action
+      - run: |
+          mkdir target
+          echo "Hell, Oh World!" > target/test.txt
+      - uses: actions/upload-artifact@v4
         with:
-         my-secret: ${{secrets.MY_SECRET}}
+          path: target
+          name: ${{inputs.artifact-name}}-hello
