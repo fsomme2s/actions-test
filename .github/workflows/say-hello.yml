@@ -5,6 +5,20 @@ on:
     inputs:
       artifact-name:
         description: 'how to name the artifact'
+      module_path:
+        required: true
+        description: 'The sub-directory of the target backend module, e.g. "kibi-backend/kibi-core"'
+      module_name:
+        required: true
+        description: 'The name of the target backend module, e.g. "kibi-core" (module_path without "kibi-backend/")'
+      command:
+        required: true
+        description: 'The command to execute'
+        type: choice
+        options:
+          - test
+          - package
+          - package-native
 
 
 jobs:
@@ -14,7 +28,23 @@ jobs:
       - run: |
           mkdir target
           echo "Hell, Oh World!" > target/test.txt
+
       - uses: actions/upload-artifact@v4
         with:
           path: target
           name: ${{inputs.artifact-name}}-hello
+      
+      - name: Execute Maven Command (Multi-Module Build)
+        if: ${{ startsWith(inputs.module_path, 'kibi-backend/') }}
+        env:
+          MAVEN_CMD: |
+            ${{ 
+              inputs.command == 'package' && format('mvn clean -pl {0} -am -Dmaven.test.skip -B package', inputs.module_name)
+              || inputs.command == 'native' && format('mvn clean -pl {0} -am package -B -Pnative -Dquarkus.native.container-build=true -Dmaven.test.skip', inputs.module_name)
+              || format('mvn clean -pl {0} -am verify com.github.spotbugs:spotbugs-maven-plugin:spotbugs -B -Dspotbugs.excludeFilterFile=${1}/kibi-infrastructure/buildsettings/spotbugs-cfg.xml', inputs.module_name, github.workspace) 
+            }}
+        shell: bash
+        run: |
+          : ${{ env.MAVEN_CMD }}
+          $MAVEN_CMD
+        working-directory: kibi-backend
